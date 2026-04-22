@@ -1,0 +1,21 @@
+{
+  "decision": "accept",
+  "details": {
+    "identity": true,
+    "integrity": true,
+    "public_verification_url": true
+  },
+  "input": {
+    "verified": true
+  },
+  "policy": {
+    "accept_if_verified": true,
+    "fail_closed": true,
+    "name": "verified-url-required-with-fail-closed-enforcement",
+    "reject_if_not_verified": true,
+    "require_verification_url": true
+  },
+  "reason": "verified=true",
+  "subject": "stage285",
+  "verification_url": "https://mokkunsuzuki-code.github.io/stage285/"
+}

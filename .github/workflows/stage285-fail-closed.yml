@@ -1,0 +1,40 @@
+name: stage285-fail-closed
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  enforce:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Run fail-closed pipeline
+        run: |
+          bash tools/run_stage285_enforced.sh
+
+      - name: Show decision
+        run: |
+          cat out/decision/decision.json
+
+      - name: Show payload result
+        run: |
+          cat out/decision/payload_result.json
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: stage285-fail-closed
+          path: |
+            out/verification/verification_status.json
+            out/decision/decision.json
+            out/decision/payload_result.json
