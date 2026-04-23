@@ -1,60 +1,74 @@
-# Stage287: Contract Compatibility for QSP Product Contracts
+# Stage288: Compatibility-Aware Verification URL
 
 ## Overview
 
-Stage287 introduces **contract compatibility verification** for QSP product contracts.
+Stage288 turns the QSP product contract into a **public verification URL**.
 
-Stage286 defined the product contract.
-Stage287 proves that the contract can evolve **without breaking verification**.
+This stage builds on:
 
-This stage adds a version-aware compatibility policy and a deterministic compatibility report.
+- Stage286: product contract
+- Stage287: contract compatibility verification
+
+It publishes a browser-readable verification page that shows:
+
+- decision
+- public status
+- fail-closed state
+- contract SHA-256
+- compatibility result
+- compatibility checks
+
+This is not just a visual page.
+It is a compatibility-aware public verification interface.
 
 ---
 
 ## Why This Stage Matters
 
-A product gains long-term value not only by being verifiable, but by **remaining verifiable across versions**.
+A verification URL is valuable only if it remains trustworthy as the product evolves.
 
-Stage287 establishes:
+Stage288 maximizes value by combining:
 
-- explicit compatibility policy
-- backward-compatible verification semantics
-- stable core contract expectations
-- version-aware checks for future evolution
+- public accessibility
+- stable product contract
+- version-aware compatibility
+- reproducible site generation
 
-This matters for:
+This creates a stronger foundation for:
 
-- SaaS deployment
-- standardization
-- OpenSSF-style review
-- long-lived public verification systems
-
----
-
-## Core Idea
-
-A product contract should remain compatible as the system evolves.
-
-Stage287 verifies whether a contract still preserves:
-
-- known version identity
-- required core layers
-- stable decision semantics
-- explicit fail-closed meaning
-- derivable public verification status
+- SaaS products
+- public trust interfaces
+- external review
+- OpenSSF-style exposure
+- future multi-version verification services
 
 ---
 
 ## What This Stage Adds
 
-This stage adds:
+- `tools/build_stage288_site.py`
+- `tools/publish_stage288_site.py`
+- `web/index.html`
+- `web/app.js`
+- `web/style.css`
+- `out/site/site_data.json`
+- `.github/workflows/stage288-pages.yml`
 
-- `spec/compatibility_policy.json`
-- `schemas/qsp_product_contract_v1.schema.json`
-- `schemas/qsp_product_contract_compatibility.schema.json`
-- `tools/check_stage287_compatibility.py`
-- `tools/verify_stage287_compatibility.py`
-- `out/compatibility/compatibility_report.json`
+---
+
+## Public Verification Model
+
+The public page reads generated verification data and displays:
+
+- contract decision
+- public status
+- compatibility state
+- fail-closed status
+- contract metadata
+- compatibility checks
+- exposure artifacts
+
+The site is generated from local artifacts, not handwritten output.
 
 ---
 
@@ -75,6 +89,8 @@ tools/
   verify_stage286_product_contract.py
   check_stage287_compatibility.py
   verify_stage287_compatibility.py
+  build_stage288_site.py
+  publish_stage288_site.py
 
 out/product/
   qsp_product_contract.json
@@ -82,25 +98,35 @@ out/product/
 
 out/compatibility/
   compatibility_report.json
-Build Product Contract
+
+out/site/
+  site_data.json
+
+web/
+  index.html
+  app.js
+  style.css
+  site_data.json
+Local Build
 python3 tools/build_stage286_product_contract.py
-Check Compatibility
 python3 tools/check_stage287_compatibility.py
-Verify Compatibility
 python3 tools/verify_stage287_compatibility.py
-Expected Result
+python3 tools/build_stage288_site.py
+python3 tools/publish_stage288_site.py
+GitHub Pages
 
-A successful run produces:
+Push to main and GitHub Actions will:
 
-a compatibility report
-explicit version binding
-compatibility status = true
-five policy checks passed
+rebuild the contract
+rebuild compatibility
+verify compatibility
+build the site data
+publish the verification page to GitHub Pages
 What This Stage Proves
-product contract versions can be checked explicitly
-backward-compatible semantics can be defined as policy
-future versions can evolve without silently breaking verification
-later public verification systems can depend on a stable compatibility layer
+product contracts can be exposed through a stable public URL
+compatibility state can be shown as part of public verification
+public verification can remain aligned with version-aware semantics
+a public verification interface can be generated deterministically from artifacts
 Conceptual Transition
 
 Stage286:
@@ -109,30 +135,18 @@ Define the product contract
 
 Stage287:
 
-Prove the contract can evolve without breaking verification
+Prove the contract stays compatible
 
-Significance
+Stage288:
 
-This stage moves the project from:
+Expose the compatible contract through a public verification URL
 
-a defined product contract
-
-to:
-
-a version-stable product contract
-
-That is a major step toward:
-
-durable verification
-product reliability
-future-proof interfaces
-public-facing verification services
 Future Directions
-compatibility adapters for future major versions
-negotiation between contract versions
-compatibility-aware verification URLs
-remote public contract validation
-policy-aware multi-version verification services
+multi-version public verification
+compatibility adapters in the browser
+downloadable verification bundles
+signed public exposure artifacts
+public policy negotiation views
 License
 
 MIT License

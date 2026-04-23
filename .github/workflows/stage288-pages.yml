@@ -1,0 +1,58 @@
+name: stage288-pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: stage288-pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      - name: Rebuild contract
+        run: python3 tools/build_stage286_product_contract.py
+
+      - name: Rebuild compatibility
+        run: python3 tools/check_stage287_compatibility.py
+
+      - name: Verify compatibility
+        run: python3 tools/verify_stage287_compatibility.py
+
+      - name: Build site data
+        run: python3 tools/build_stage288_site.py
+
+      - name: Publish site data into web root
+        run: python3 tools/publish_stage288_site.py
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: web
+
+  deploy:
+    environment:
+      name: github-pages
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
