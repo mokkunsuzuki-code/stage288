@@ -1,167 +1,104 @@
-# Stage286: QSP Internal Connection as a Product Specification
+# Stage287: Contract Compatibility for QSP Product Contracts
 
 ## Overview
 
-Stage286 upgrades the QSP-to-VEP connection from an implementation detail into a **product specification**.
+Stage287 introduces **contract compatibility verification** for QSP product contracts.
 
-This stage defines a stable internal contract for how QSP:
+Stage286 defined the product contract.
 
-- receives normalized input
-- produces a decision
-- enforces fail-closed behavior
-- exports a public-facing exposure contract for VEP
+Stage287 proves that the contract can now be checked for **backward-compatible verification semantics**, making the architecture more stable for future evolution.
 
-This transforms:
+This stage answers a core product question:
 
-- a connected system
-
-into:
-
-- a reproducible product interface
+> Can the system evolve without breaking verification?
 
 ---
 
 ## Why This Stage Matters
 
-Previous stages established:
+A product gains value not only by being verifiable, but by **remaining verifiable across versions**.
 
-- evidence generation
-- trust measurement
-- QSP–VEP connectivity
+This stage establishes:
 
-Stage286 makes that connection:
+- explicit compatibility policy
+- stable core semantics
+- version-aware verification
+- a path toward long-term product evolution
 
-- stable
-- replaceable
-- product-ready
+This is important for:
 
-The goal is not a new cryptographic primitive.
-
-The goal is to define a **durable internal contract** that allows future engines (QKD, PQC, hybrid, etc.) to evolve without breaking the external verification experience.
-
----
-
-## Core Product Model
-
-Stage286 defines four product layers:
-
-### 1. Input Layer
-- session_id
-- subject
-- policy
-- evidence (integrity / execution / identity / time)
-
-### 2. Decision Layer
-- decision: accept / pending / reject
-- reason
-- trust scores
-- verified claims
-
-### 3. Enforcement Layer
-- fail-closed behavior (explicit)
-- execution state
-- allowed outputs
-
-### 4. Exposure Layer
-- public status
-- exposure artifacts
-- contract SHA-256
+- SaaS deployment
+- standardization
+- OpenSSF-style external review
+- long-lived public verification systems
 
 ---
 
-## Product Contract
+## Core Idea
 
-All QSP decisions are normalized into a **single deterministic contract**:
+A product contract must remain compatible across change.
 
+Stage287 checks whether a contract still preserves:
 
-out/product/qsp_product_contract.json
-
-
-This contract becomes:
-
-- the source of truth for VEP
-- the basis for public verification
-- the interface boundary for future systems
-
----
-
-## What This Stage Proves
-
-- QSP internal connection can be formalized as a product contract
-- fail-closed behavior can be explicitly modeled and verified
-- VEP can consume a normalized contract instead of ad hoc artifacts
-- system evolution (QKD / PQC / hybrid) is possible without breaking the interface
+- known version identity
+- required core layers
+- stable decision semantics
+- explicit fail-closed meaning
+- public verification status
 
 ---
 
 ## Repository Structure
 
-
+```text
 spec/
-qsp_product_spec.json
+  compatibility_policy.json
+  qsp_product_spec.json
 
 schemas/
-qsp_product_contract.schema.json
+  qsp_product_contract.schema.json
+  qsp_product_contract_v1.schema.json
+  qsp_product_contract_compatibility.schema.json
 
 tools/
-build_stage286_product_contract.py
-verify_stage286_product_contract.py
+  build_stage286_product_contract.py
+  verify_stage286_product_contract.py
+  check_stage287_compatibility.py
+  verify_stage287_compatibility.py
 
 out/product/
-qsp_product_contract.json
-qsp_product_contract.json.sha256
+  qsp_product_contract.json
+  qsp_product_contract.json.sha256
 
-
----
-
-## Build
-
-```bash
+out/compatibility/
+  compatibility_report.json
+Build the Product Contract
 python3 tools/build_stage286_product_contract.py
-Verify
-python3 tools/verify_stage286_product_contract.py
-Verification Guarantees
-
-The verification step ensures:
-
-correct stage binding (stage286)
-explicit fail-closed requirement
-valid decision type
-consistency between decision and public status
-SHA-256 integrity of the contract
-Product Significance
-
-This stage represents a transition:
-
-From:
-
-research pipeline
-verification stack
-connected prototype
-
-To:
-
-product contract
-replaceable architecture
-stable verification interface
-Conceptual Summary
-
-Stage285:
-
-QSP and VEP are connected
+Check Compatibility
+python3 tools/check_stage287_compatibility.py
+Verify Compatibility
+python3 tools/verify_stage287_compatibility.py
+What This Stage Proves
+product contract versions can be checked explicitly
+backward-compatible semantics can be defined as policy
+future versions can evolve without silently breaking verification
+public verification systems can later depend on a stable compatibility layer
+Conceptual Transition
 
 Stage286:
 
-The connection is defined as a product contract
+Define the product contract
+
+Stage287:
+
+Prove the contract can evolve without breaking verification
 
 Future Directions
-Contract compatibility (versioning / backward support)
-Policy negotiation
-QKD session binding
-PQC signature integration
-Threshold/multi-party approval
-Remote attested execution
-SaaS deployment model
+compatibility adapters for future major versions
+negotiation between contract versions
+verification URL over compatibility-aware contracts
+remote public contract validation
+policy-aware multi-version verification services
 License
 
 MIT License
