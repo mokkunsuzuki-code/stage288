@@ -38,7 +38,7 @@
     "stage": "stage287"
   },
   "contract": {
-    "contract_sha256": "a928bfd56794a9a76a354f686929d3df9a1aa6fd03e13da824763eb9ab8f2c1a",
+    "contract_sha256": "73fcf41d74f3cef478854beadf4326a98c08dd3db2e2343c7e17c9128e1c7606",
     "decision": "accept",
     "execution_state": "released",
     "exposure_artifacts": [
@@ -48,7 +48,7 @@
       "public_verification_url"
     ],
     "fail_closed": true,
-    "generated_at": "2026-04-23T02:25:06.411547+00:00",
+    "generated_at": "2026-04-23T02:28:22.053395+00:00",
     "public_status": "accept",
     "reason": "The product contract satisfies all required trust conditions and is enforced under a fail-closed execution model.",
     "spec_version": "1.0.0",
