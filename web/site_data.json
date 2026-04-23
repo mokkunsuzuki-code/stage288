@@ -38,7 +38,7 @@
     "stage": "stage287"
   },
   "contract": {
-    "contract_sha256": "4822e565cfd08c6193246110cfcd725d6a4efd7a21572ee7877c9fcc0b1ac986",
+    "contract_sha256": "4c4054357f3d88d517c7b95fb1547f4d2ae3d976a417a343ac978ebdfb9fd9a4",
     "decision": "accept",
     "execution_state": "released",
     "exposure_artifacts": [
@@ -48,7 +48,7 @@
       "public_verification_url"
     ],
     "fail_closed": true,
-    "generated_at": "2026-04-23T02:07:31.210171+00:00",
+    "generated_at": "2026-04-23T02:11:27.683523+00:00",
     "public_status": "accept",
     "reason": "QSP internal product contract is well-formed and all required trust dimensions are represented.",
     "spec_version": "1.0.0",
@@ -57,6 +57,6 @@
   "page_stage": "stage288",
   "page_title": "Stage288 Compatibility-Aware Verification URL",
   "stage": "stage288",
-  "summary": "This public page exposes the Stage286 product contract through the Stage288 verification interface, with Stage287 compatibility results included.",
+  "summary": "This page is the Stage288 public verification interface. It displays the Stage286 product contract together with Stage287 compatibility verification results.",
   "title": "QSP Product Contract Verification URL"
 }

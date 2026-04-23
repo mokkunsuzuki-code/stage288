@@ -21,7 +21,7 @@ def main() -> None:
         "page_stage": "stage288",
         "page_title": "Stage288 Compatibility-Aware Verification URL",
         "title": "QSP Product Contract Verification URL",
-        "summary": "This public page exposes the Stage286 product contract through the Stage288 verification interface, with Stage287 compatibility results included.",
+        "summary": "This page is the Stage288 public verification interface. It displays the Stage286 product contract together with Stage287 compatibility verification results.",
         "contract": {
             "stage": contract.get("stage"),
             "spec_version": contract.get("spec_version"),
