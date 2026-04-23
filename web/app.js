@@ -36,31 +36,39 @@ function render(data) {
   const artifactsHtml = (c.exposure_artifacts || []).map(item => `<li>${item}</li>`).join("");
 
   app.innerHTML = `
-    <div class="hero">
-      <h1>${text(data.title)}</h1>
-      <p>
-        This public verification page exposes a compatibility-aware QSP product contract.
-        It shows the contract decision, fail-closed state, public verification status,
-        and backward-compatibility result in one stable interface.
-      </p>
+    <div class="card">
+      <h1>${text(data.page_title)}</h1>
+      <p>${text(data.summary)}</p>
     </div>
 
-    <div class="grid">
+    <div class="section grid">
+      <div class="card">
+        <div class="label">Page Stage</div>
+        <div class="value">${text(data.page_stage)}</div>
+      </div>
+      <div class="card">
+        <div class="label">Contract Stage</div>
+        <div class="value">${text(c.stage)}</div>
+      </div>
+      <div class="card">
+        <div class="label">Compatibility Stage</div>
+        <div class="value">${text(compat.stage)}</div>
+      </div>
+    </div>
+
+    <div class="section grid">
       <div class="card">
         <div class="label">Contract Decision</div>
         <div class="value"><span class="badge ${badgeClassForStatus(c.decision)}">${text(c.decision).toUpperCase()}</span></div>
       </div>
-
       <div class="card">
         <div class="label">Public Status</div>
         <div class="value"><span class="badge ${badgeClassForStatus(c.public_status)}">${text(c.public_status).toUpperCase()}</span></div>
       </div>
-
       <div class="card">
         <div class="label">Compatibility</div>
         <div class="value"><span class="badge ${badgeClassForStatus(compat.is_compatible)}">${compat.is_compatible ? "COMPATIBLE" : "INCOMPATIBLE"}</span></div>
       </div>
-
       <div class="card">
         <div class="label">Fail-Closed</div>
         <div class="value"><span class="badge ${badgeClassForStatus(c.fail_closed)}">${c.fail_closed ? "TRUE" : "FALSE"}</span></div>
@@ -69,8 +77,24 @@ function render(data) {
 
     <div class="section grid">
       <div class="card">
+        <h2>Page / Contract Relationship</h2>
+        <div class="value">
+          This page is the <strong>Stage288 public verification interface</strong>.<br />
+          It displays the <strong>Stage286 product contract</strong> and the
+          <strong>Stage287 compatibility result</strong>.
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Reason</h2>
+        <div class="value">${text(c.reason)}</div>
+      </div>
+    </div>
+
+    <div class="section grid">
+      <div class="card">
         <h2>Contract Summary</h2>
-        <div class="label">Stage</div>
+        <div class="label">Contract Stage</div>
         <div class="value">${text(c.stage)}</div>
 
         <div class="label" style="margin-top:12px;">Spec Version</div>
@@ -84,25 +108,21 @@ function render(data) {
       </div>
 
       <div class="card">
-        <h2>Reason</h2>
-        <div class="value">${text(c.reason)}</div>
-      </div>
-    </div>
-
-    <div class="section grid">
-      <div class="card">
         <h2>Compatibility Policy</h2>
-        <div class="label">Policy ID</div>
+        <div class="label">Compatibility Stage</div>
+        <div class="value">${text(compat.stage)}</div>
+
+        <div class="label" style="margin-top:12px;">Policy ID</div>
         <div class="value">${text(compat.policy_id)}</div>
 
         <div class="label" style="margin-top:12px;">Contract Version</div>
         <div class="value">${text(compat.contract_version)}</div>
       </div>
+    </div>
 
-      <div class="card">
-        <h2>Contract SHA-256</h2>
-        <pre>${text(c.contract_sha256)}</pre>
-      </div>
+    <div class="section card">
+      <h2>Contract SHA-256</h2>
+      <pre>${text(c.contract_sha256)}</pre>
     </div>
 
     <div class="section card">
@@ -116,7 +136,7 @@ function render(data) {
     </div>
 
     <div class="footer">
-      Stage288 turns the QSP product contract into a public, compatibility-aware verification interface.
+      Stage288 exposes the Stage286 QSP product contract through a public verification interface, with Stage287 compatibility verification included.
     </div>
   `;
 }

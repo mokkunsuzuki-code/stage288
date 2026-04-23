@@ -18,7 +18,10 @@ def main() -> None:
 
     site_data = {
         "stage": "stage288",
+        "page_stage": "stage288",
+        "page_title": "Stage288 Compatibility-Aware Verification URL",
         "title": "QSP Product Contract Verification URL",
+        "summary": "This public page exposes the Stage286 product contract through the Stage288 verification interface, with Stage287 compatibility results included.",
         "contract": {
             "stage": contract.get("stage"),
             "spec_version": contract.get("spec_version"),
@@ -29,13 +32,14 @@ def main() -> None:
             "fail_closed": contract.get("enforcement_layer", {}).get("fail_closed"),
             "execution_state": contract.get("enforcement_layer", {}).get("execution_state"),
             "contract_sha256": contract.get("exposure_layer", {}).get("contract_sha256"),
-            "exposure_artifacts": contract.get("exposure_layer", {}).get("exposure_artifacts", []),
+            "exposure_artifacts": contract.get("exposure_layer", {}).get("exposure_artifacts", [])
         },
         "compatibility": {
+            "stage": "stage287",
             "policy_id": compatibility.get("policy_id"),
             "contract_version": compatibility.get("contract_version"),
             "is_compatible": compatibility.get("is_compatible"),
-            "checks": compatibility.get("checks", []),
+            "checks": compatibility.get("checks", [])
         }
     }
 
@@ -45,6 +49,9 @@ def main() -> None:
     )
 
     print(f"[OK] wrote {OUT_PATH}")
+    print(f"[OK] page_stage={site_data['page_stage']}")
+    print(f"[OK] contract_stage={site_data['contract']['stage']}")
+    print(f"[OK] compatibility_stage={site_data['compatibility']['stage']}")
     print(f"[OK] decision={site_data['contract']['decision']}")
     print(f"[OK] public_status={site_data['contract']['public_status']}")
     print(f"[OK] is_compatible={site_data['compatibility']['is_compatible']}")
