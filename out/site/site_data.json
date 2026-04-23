@@ -38,7 +38,7 @@
     "stage": "stage287"
   },
   "contract": {
-    "contract_sha256": "4c4054357f3d88d517c7b95fb1547f4d2ae3d976a417a343ac978ebdfb9fd9a4",
+    "contract_sha256": "57b8ebde8219f46591e50f424c0e754991c0d5003d6fc37a4e6cb9b9d3a887a1",
     "decision": "accept",
     "execution_state": "released",
     "exposure_artifacts": [
@@ -48,15 +48,15 @@
       "public_verification_url"
     ],
     "fail_closed": true,
-    "generated_at": "2026-04-23T02:11:27.683523+00:00",
+    "generated_at": "2026-04-23T02:20:18.617186+00:00",
     "public_status": "accept",
     "reason": "QSP internal product contract is well-formed and all required trust dimensions are represented.",
     "spec_version": "1.0.0",
     "stage": "stage286"
   },
   "page_stage": "stage288",
-  "page_title": "Stage288 Compatibility-Aware Verification URL",
+  "page_title": "Stage288 互換性対応 公開検証URL",
   "stage": "stage288",
-  "summary": "This page is the Stage288 public verification interface. It displays the Stage286 product contract together with Stage287 compatibility verification results.",
+  "summary": "このページは Stage288 の公開検証インターフェースです。Stage286 の製品契約と、Stage287 の互換性検証結果を表示します。",
   "title": "QSP Product Contract Verification URL"
 }

@@ -19,9 +19,9 @@ def main() -> None:
     site_data = {
         "stage": "stage288",
         "page_stage": "stage288",
-        "page_title": "Stage288 Compatibility-Aware Verification URL",
+        "page_title": "Stage288 互換性対応 公開検証URL",
         "title": "QSP Product Contract Verification URL",
-        "summary": "This page is the Stage288 public verification interface. It displays the Stage286 product contract together with Stage287 compatibility verification results.",
+        "summary": "このページは Stage288 の公開検証インターフェースです。Stage286 の製品契約と、Stage287 の互換性検証結果を表示します。",
         "contract": {
             "stage": contract.get("stage"),
             "spec_version": contract.get("spec_version"),
