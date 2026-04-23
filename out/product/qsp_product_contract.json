@@ -25,7 +25,7 @@
     "fail_closed": true
   },
   "exposure_layer": {
-    "contract_sha256": "7e5cdc0e7c1ba23041f1b6a32adf10d2e254b34c0e5b3d5e053eb9341f163813",
+    "contract_sha256": "98fddd86bde3b18de4b60f74d14bdcfc01ff17c6b2f89660f2879437dca55d0a",
     "exposure_artifacts": [
       "release_manifest.json",
       "release_manifest.json.sha256",
@@ -34,7 +34,7 @@
     ],
     "public_status": "accept"
   },
-  "generated_at": "2026-04-23T01:46:03.685727+00:00",
+  "generated_at": "2026-04-23T01:55:23.833423+00:00",
   "input_layer": {
     "evidence": {
       "execution": {
