@@ -38,7 +38,7 @@
     "stage": "stage287"
   },
   "contract": {
-    "contract_sha256": "57b8ebde8219f46591e50f424c0e754991c0d5003d6fc37a4e6cb9b9d3a887a1",
+    "contract_sha256": "a928bfd56794a9a76a354f686929d3df9a1aa6fd03e13da824763eb9ab8f2c1a",
     "decision": "accept",
     "execution_state": "released",
     "exposure_artifacts": [
@@ -48,15 +48,18 @@
       "public_verification_url"
     ],
     "fail_closed": true,
-    "generated_at": "2026-04-23T02:20:18.617186+00:00",
+    "generated_at": "2026-04-23T02:25:06.411547+00:00",
     "public_status": "accept",
-    "reason": "QSP internal product contract is well-formed and all required trust dimensions are represented.",
+    "reason": "The product contract satisfies all required trust conditions and is enforced under a fail-closed execution model.",
     "spec_version": "1.0.0",
     "stage": "stage286"
   },
+  "hero_status": "ACCEPTED",
+  "hero_status_code": "accept",
+  "hero_substatus": "SAFE TO EXECUTE",
+  "hero_title": "VERIFICATION RESULT",
   "page_stage": "stage288",
-  "page_title": "Stage288 互換性対応 公開検証URL",
+  "page_title": "Stage288 Compatibility-Aware Verification URL",
   "stage": "stage288",
-  "summary": "このページは Stage288 の公開検証インターフェースです。Stage286 の製品契約と、Stage287 の互換性検証結果を表示します。",
-  "title": "QSP Product Contract Verification URL"
+  "summary": "This page publicly verifies a QSP product contract.\n\nIt shows:\n- the contract (Stage286)\n- its compatibility guarantee (Stage287)\n- and its enforced decision (fail-closed)\n\nAll in one stable verification interface (Stage288)."
 }
